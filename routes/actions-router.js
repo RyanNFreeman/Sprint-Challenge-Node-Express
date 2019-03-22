@@ -6,8 +6,8 @@ const db = require('../data/helpers/actionModel')
 //CREATE of CRUD ops
 router.post('/', (req, res) => {
     const newAction = req.body;
-    const {project_id, description, notes} = newAction
-    project_id && description && notes ?
+    const {project_id, description, notes, completed} = newAction
+    project_id && description && notes && completed ?
     db.insert(newAction)
         .then(action => {
             res.status(201).json(action)
@@ -17,7 +17,7 @@ router.post('/', (req, res) => {
         })
     : res
     .status(400)
-    .json({ error: 'Request must provide a project id, description and notes field'})
+    .json({ error: 'Request must provide a project id, description, notes field, as well as if it\'s been completed' })
 })
 
 //READ of CRUD ops
@@ -53,8 +53,8 @@ router.get("/:id", (req, res) => {
 //UPDATE of CRUD ops
 router.put('/:id', (req, res) => {
     const { id } = req.params;
-    const { project_id, description, notes } = req.body;
-    try{if (project_id, description, notes) {
+    const { project_id, description, notes, completed} = req.body;
+    try{if (project_id || description || notes || completed) {
         db
         .update(id, {project_id, description, notes})
         .then(action => {

@@ -6,8 +6,8 @@ const db = require('../data/helpers/projectModel')
 //CREATE of CRUD ops
 router.post('/', (req, res) => {
     const newProject = req.body;
-    const {name, description} = newProject
-    name && description ?
+    const {name, description, completed} = newProject
+    name && description && completed ?
     db.insert(newProject)
         .then(project => {
             res.status(201).json(project)
