@@ -25,15 +25,20 @@ In this challenge, create a web API around the following resources: `Projects` a
 Demonstrate your understanding of this Sprint's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager.
 
 - [ ] Mention two parts of Express that you learned about this week.
+Routing. It’s one of the biggest features of express.
+Middleware. Although routing is technically middleware, more generally middleware provides features such as security and authentication, as well as the ability to work with other coding libraries like React.
 
 - [ ] Describe Middleware?
+Middleware is a function that steps in during the express procedures, typically either server operations or during CRUD operations. Middleware will either stop a process and return something back, simply forward a process, forward a different process, or forward multiple processes.
 
 - [ ] Describe a Resource?
+Everything is a resource in RESTFul styling. When we look at software and we have any noun, that’s a resource. So in slack we have a user, then a profile picture, then an inbox, then emojis. These nouns are all resources
 
 - [ ] What can the API return to help clients know if a request was successful?
+One of the most important responsibilities of someone writing an API is to return correct HTTP status codes. Responses should tell the client a status code that tells the client if their request was successful or unsuccessful and why.
 
 - [ ] How can we partition our application into sub-applications?
-
+With our separation of concerns, we can build out routes in such a way that gives us a cleaner structure. As Luis says, coding is a communication tool, and dividing into sub-apps may help the next developer understand what is going on more quickly.  
 ## Project Setup
 
 Follow these steps to set up and work on your project:
