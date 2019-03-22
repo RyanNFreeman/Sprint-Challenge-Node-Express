@@ -33,4 +33,57 @@ router.get('/', (req, res) => {
     })
 })
 
+router.get("/:id", (req, res) => {
+    const {id} = req.params;
+    db
+        .get(id)
+        .then(action => {
+            if(action){
+                res.json(action);
+            }
+            else {
+                res.status(404).json({message: "action does not exist"})
+            }
+        })
+        .catch (err => {
+            res.status(500).json({message: "action could not be retrieved"})
+        })
+})
+
+//UPDATE of CRUD ops
+router.put('/:id', (req, res) => {
+    const { id } = req.params;
+    const { project_id, description, notes } = req.body;
+    try{if (project_id, description, notes) {
+        db
+        .update(id, {project_id, description, notes})
+        .then(action => {
+            res.status(200).json(action)
+        })
+        .catch(err => {
+            res.status(500).json({error: 'action cannot be found'})
+        })
+    }}catch(error){
+        res.status(400).json({err: 'you must include a project id, description or notes to be updated'})
+    }
+})
+
+//DELETE of CRUD ops
+router.delete("/:id", (req, res) => {
+    const {id} = req.params;
+    db
+        .remove(id)
+        .then(action => {
+            if(action){
+                res.json({message: "success"});
+            }
+            else {
+                res.status(404).json({message: "action id does not exist"})
+            }
+        })
+        .catch (err => {
+            res.status(500).json({message: "action could not be located"})
+        })
+})
+
 module.exports = router
