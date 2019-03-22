@@ -55,12 +55,12 @@ router.get("/:id", (req, res) => {
 router.put("/:id", (req, res) => {
     const {id} = req.params;
     const {name, description, completed } = req.body;
-    if (name, description, completed){
-        projects
+    if (name || description || completed){
+        db
         .update(id, {name, description, completed})
         .then(project => {
             if (project) {
-                projects.getProjectActions(id)
+                db.getProjectActions(id)
                 .then(project => {
                     res.json(project);
                 });
