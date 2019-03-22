@@ -3,7 +3,8 @@
 // code away!
 
 const server = require('./server')
+const port = 4000
 
-server.listen(4000, () => {
-    console.log('server listening')
+server.listen(port, () => {
+    console.log(`server listening on port ${port}`)
 })
